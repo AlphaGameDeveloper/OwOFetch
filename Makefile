@@ -1,9 +1,9 @@
-NAME = uwufetch
-BIN_FILES = uwufetch.c
+NAME = owofetch
+BIN_FILES = owofetch.c
 LIB_FILES = fetch.c
-UWUFETCH_VERSION = $(shell git describe --tags)
-CFLAGS = -O3 -pthread -DUWUFETCH_VERSION=\"$(UWUFETCH_VERSION)\"
-CFLAGS_DEBUG = -Wall -Wextra -g -pthread -DUWUFETCH_VERSION=\"$(UWUFETCH_VERSION)\" -D__DEBUG__
+OWOFETCH_VERSION = $(shell git describe --tags)
+CFLAGS = -O3 -pthread -DUWUFETCH_VERSION=\"$(OWOFETCH_VERSION)\"
+CFLAGS_DEBUG = -Wall -Wextra -g -pthread -DUWUFETCH_VERSION=\"$(OWOFETCH_VERSION)\" -D__DEBUG__
 CC = cc
 AR = ar
 DESTDIR = /usr
@@ -84,18 +84,18 @@ lib: $(LIB_FILES)
 	$(CC) $(CFLAGS) -shared -o lib$(LIB_FILES:.c=.so) $(LIB_FILES:.c=.o)
 
 release: build man
-	mkdir -pv $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR)
-	cp $(RELEASE_SCRIPTS) $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR)
-	cp -r res $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR)
-	cp $(NAME)$(EXT) $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR)
-	cp $(NAME).1.gz $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR)
-	cp lib$(LIB_FILES:.c=.so) $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR)
-	cp $(LIB_FILES:.c=.h) $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR)
-	cp default.config $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR)
+	mkdir -pv $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
+	cp $(RELEASE_SCRIPTS) $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
+	cp -r res $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
+	cp $(NAME)$(EXT) $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
+	cp $(NAME).1.gz $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
+	cp lib$(LIB_FILES:.c=.so) $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
+	cp $(LIB_FILES:.c=.h) $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
+	cp default.config $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
 ifeq ($(PLATFORM), linux4win)
-	zip -9r $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR).zip $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR)
+	zip -9r $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR).zip $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
 else
-	tar -czf $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR).tar.gz $(NAME)_$(UWUFETCH_VERSION)-$(PLATFORM_ABBR)
+	tar -czf $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR).tar.gz $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
 endif
 
 debug: CFLAGS = $(CFLAGS_DEBUG)
@@ -127,7 +127,7 @@ ascii_debug:
 	ls res/ascii/$(ASCII).txt | entr -c ./$(NAME) -d $(ASCII)
 
 man:
-	sed "s/{DATE}/$(shell date '+%d %B %Y')/g" $(NAME).1 | sed "s/{UWUFETCH_VERSION}/$(UWUFETCH_VERSION)/g" | gzip > $(NAME).1.gz
+	sed "s/{DATE}/$(shell date '+%d %B %Y')/g" $(NAME).1 | sed "s/{OWOFETCH_VERSION}/$(OWOFETCH_VERSION)/g" | gzip > $(NAME).1.gz
 
 man_debug:
 	@clear
