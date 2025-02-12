@@ -414,7 +414,7 @@ void uwu_hw(char* hwname) {
   HW_TO_UWU("broadcom", "Bwoadcom")
   HW_TO_UWU("motorola", "MotOwOwa")
   HW_TO_UWU("proliant", "ProLinyant")
-  HW_TO_UWU("poweredge", "POwOwEdge")
+  HW_TO_UWU("poweredge", "POwOwEdge ")
   HW_TO_UWU("apple", "Nyapple")
   HW_TO_UWU("electronic", "ElectrOwOnic")
   HW_TO_UWU("processor", "Pwocessow")
@@ -427,6 +427,9 @@ void uwu_hw(char* hwname) {
   HW_TO_UWU("lucienne", "Lucienyan")
   HW_TO_UWU("tuxedo", "TUWUXEDO")
   HW_TO_UWU("aura", "Uwura")
+  HW_TO_UWU("ryzen", "Wyzen")
+  HW_TO_UWU("pro", "OwO")
+  HW_TO_UWU("macbook", "MacbOwOok")
 #undef HW_TO_UWU
 }
 
