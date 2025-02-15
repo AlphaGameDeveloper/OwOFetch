@@ -714,9 +714,9 @@ void usage(char* arg) {
 #endif
          "                        read README.md for more info%s\n"
          "    -l, --list          lists all supported distributions\n"
-         "    -V, --version       prints the current owofetch version\n"
+         "    -v, --version       prints the current owofetch version\n"
 #ifdef __DEBUG__
-         "    -v, --verbose       logs everything\n"
+         "    -V, --verbose       Makes the program extremely talkative.  Useful for debugging!\n"
 #endif
          "    -w, --write-cache   writes to the cache file (~/.cache/owofetch.cache)\n"
          "    -r, --read-cache    reads from the cache file (~/.cache/owofetch.cache)\n",
@@ -753,16 +753,16 @@ int main(int argc, char* argv[]) {
       {"image", optional_argument, NULL, 'i'},
       {"list", no_argument, NULL, 'l'},
       {"read-cache", no_argument, NULL, 'r'},
-      {"version", no_argument, NULL, 'V'},
+      {"version", no_argument, NULL, 'v'},
 #ifdef __DEBUG__
-      {"verbose", no_argument, NULL, 'v'},
+      {"verbose", no_argument, NULL, 'V'},
 #endif
       {"write-cache", no_argument, NULL, 'w'},
       {0}};
 #ifdef __DEBUG__
-  #define OPT_STRING "c:d:hi::lrVvw"
+  #define OPT_STRING "c:d:hi::lrvVw"
 #else
-  #define OPT_STRING "c:d:hi::lrVw"
+  #define OPT_STRING "c:d:hi::lrvw"
 #endif
 
   // reading cmdline options
@@ -788,18 +788,23 @@ int main(int argc, char* argv[]) {
     case 'r':
       user_config_file.read_enabled = true;
       break;
-    case 'V':
-      printf("%s[Note] Versioning is still a work-in-progress!\n", GREEN);
-      printf("%s[Note] Keep tuned for when I actually get around to working on that!\n\n", GREEN);
-      printf("%sOwOFetch version %s  %s[%s]\n", YELLOW, OWOFETCH_VERSION, RED, OWOFETCH_COMMITID);
+    case 'v':
+      LOG_I("Git Commit Message: %s\"%s\"%s", CYAN, OWOFETCH_COMMITMSG, NORMAL);
+      printf("[%sNote%s] Versioning is still a work-in-progress!\n", YELLOW, NORMAL);
+      printf("[%sNote%s] Keep tuned for when I actually get around to working on that!\n\n", YELLOW, NORMAL);
+      printf("%sOwOFetch version %s  %s[%s]  ", YELLOW, OWOFETCH_VERSION, RED, OWOFETCH_COMMITID);
       #if __DEBUG__
-        printf("%sThis is a debug build!\n", RED);
+        printf("%sDEBUG BUILD%s\n", "\e[0;41m", NORMAL);
+      #else
+        // not a debug build so we omit the text and make a newline.
+        // Not proud of this solution but oh well...
+        printf("\n");
       #endif
       // TODO: Make this gray!
       // printf("%s[%s]\n", CYAN, OWOFETCH_COMMITMSG);
       return 0;
 #ifdef __DEBUG__
-    case 'v':
+    case 'V':
       *verbose_enabled = true;
       LOG_I("version %s", OWOFETCH_VERSION);
       break;
@@ -848,6 +853,6 @@ int main(int argc, char* argv[]) {
   // print info and move cursor down if the number of printed lines is smaller that the default image height
   int to_move = 9 - print_info(&config_flags, &user_info);
   printf("\033[%d%c", to_move < 0 ? -to_move : to_move, to_move < 0 ? 'A' : 'B');
-  LOG_I("Execution completed successfully!");
+  LOG_I("%sExecution completed successfully!%s\n", "\e[0;42m", NORMAL); // BG:Green
   return 0;
 }
