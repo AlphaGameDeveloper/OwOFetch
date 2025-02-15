@@ -9,7 +9,7 @@ assignees: ''
 
 **OS info**
 - OS name:
-- uwufied OS name:
+- OwOified OS name:
 - OS family:
 - `/etc/os-release` content:
 - if `/etc/os-release` doesn't exist in this OS, alternative way to recognize the OS:
