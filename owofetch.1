@@ -7,11 +7,11 @@
 .\" I makes text appear in italic face
 .\" inline versions would look like \fBthis\fR and \fIthis\fR
 .\" EX and EE surrounds example section with text as is, with no empty lines in between the actual lines
-.TH UWUFETCH 1 "{DATE}" "{UWUFETCH_VERSION}" "A meme system info tool for Linux"
+.TH OWOFETCH 1 "{DATE}" "{OWOFETCH_VERSION}" "A meme system info tool for Linux"
 .SH DESCRIPTION
-UwUfetch is a program inspired by neofetch and ufetch, that takes system information and prints it in terminal in an UwU way, with either UwU ascii or image logo.
+OwOFetch is a program inspired by neofetch and ufetch, that takes system information and prints it in terminal in an OwO way, with either OwO ascii or image logo.
 .SH SYNOPSYS
-\fBuwufetch\fR [\fIOPTIONS\fR] [\fIARGUMENTS\fR]
+\fBowofetch\fR [\fIOPTIONS\fR] [\fIARGUMENTS\fR]
 .SH OPTIONS
 .TP
 .B -c --config
@@ -31,16 +31,16 @@ works in most terminals, read README.md for more info
 prints a list of all supported distributions
 .TP
 .B -r --read-cache
-reads the cache file (~/.cache/uwufetch.cache)
+reads the cache file (~/.cache/owofetch.cache)
 .TP
 .B -v --version
-prints the current uwufetch version
+prints the current owofetch version
 .TP
 .B -w --write-cache
-writes to the cache file (~/.cache/uwufetch.cache)
+writes to the cache file (~/.cache/owofetch.cache)
 .SH CONFIGURATION
-The system-wide config file is /etc/uwufetch/config, and you can use it to configure uwufetch globally or as a template for your own config.
-The user config file is located in $HOME/.config/uwufetch/config (you need to create it), but you can change the path by using the \fB--config\fR option.
+The system-wide config file is /etc/owofetch/config, and you can use it to configure owofetch globally or as a template for your own config.
+The user config file is located in $HOME/.config/owofetch/config (you need to create it), but you can change the path by using the \fB--config\fR option.
 .TP
 .SH EXAMPLE
 .EX
@@ -105,9 +105,9 @@ WinyandOwOws  \fBwindows\fR
 .EE
 .SH EXAMPLES
 .EX
-uwufetch -d arch                  # uses ascii Arch logo
-uwufetch -i some_image.png  # prints custom image (no full path is needed)
-uwufetch -id artix              # uses Artix image logo (which is also uwu)
+owofetch -d arch                  # uses ascii Arch logo
+owofetch -i some_image.png  # prints custom image (no full path is needed)
+owofetch -id artix              # uses Artix image logo (which is also uwu)
 .EE
 .SH DEPENDENCIES
 .TP 8
@@ -131,4 +131,4 @@ better image viewing
 .P
 All of these dependencies are optional. There are no required dependencies (except libc).
 .SH LICENSE AND COPYRIGHT
-uwufetch is provided under the GPL3 license, for copyright info read https://github.com/TheDarkBug/uwufetch/tree/main/res/COPYRIGHT.md.
+owofetch is provided under the GPL3 license, for copyright info read https://github.com/TheDarkBug/owofetch/tree/main/res/COPYRIGHT.md.
