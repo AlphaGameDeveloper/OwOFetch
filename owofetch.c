@@ -790,8 +790,6 @@ int main(int argc, char* argv[]) {
       break;
     case 'v':
       LOG_I("Git Commit Message: %s\"%s\"%s", CYAN, OWOFETCH_COMMITMSG, NORMAL);
-      printf("[%sNote%s] Versioning is still a work-in-progress!\n", YELLOW, NORMAL);
-      printf("[%sNote%s] Keep tuned for when I actually get around to working on that!\n\n", YELLOW, NORMAL);
       printf("%sOwOFetch version %s  %s[%s]  ", YELLOW, OWOFETCH_VERSION, RED, OWOFETCH_COMMITID);
       #if __DEBUG__
         printf("%sDEBUG BUILD%s\n", "\e[0;41m", NORMAL);

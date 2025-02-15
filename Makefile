@@ -1,7 +1,7 @@
 NAME = owofetch
 BIN_FILES = owofetch.c
 LIB_FILES = fetch.c
-OWOFETCH_VERSION = 0.0
+OWOFETCH_VERSION = $(shell git describe --tags)
 OWOFETCH_COMMITMSG = "$(shell git log -1 --pretty=%B)"
 OWOFETCH_COMMITID = "$(shell git log -1 --pretty=%h)"
 
