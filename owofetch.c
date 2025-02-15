@@ -89,17 +89,17 @@ struct configuration parse_config(struct info* user_info, struct user_config* us
   if (user_config_file->config_directory == NULL) { // if config directory is not set, try to open the default
     if (getenv("HOME") != NULL) {
       char homedir[512];
-      sprintf(homedir, "%s/.config/uwufetch/config", getenv("HOME"));
+      sprintf(homedir, "%s/.config/owofetch/config", getenv("HOME"));
       LOG_V(homedir);
       config = fopen(homedir, "r");
       if (!config) {
         if (getenv("PREFIX") != NULL) {
           char prefixed_etc[512];
-          sprintf(prefixed_etc, "%s/etc/uwufetch/config", getenv("PREFIX"));
+          sprintf(prefixed_etc, "%s/etc/owofetch/config", getenv("PREFIX"));
           LOG_V(prefixed_etc);
           config = fopen(prefixed_etc, "r");
         } else
-          config = fopen("/etc/uwufetch/config", "r");
+          config = fopen("/etc/owofetch/config", "r");
       }
     }
   } else
@@ -202,9 +202,9 @@ int print_image(struct info* user_info) {
 #ifndef __IPHONE__
   char command[256];
   if (strlen(user_info->image_name) < 1) {
-    char* repl_str = strcmp(user_info->os_name, "android") == 0 ? "/data/data/com.termux/files/usr/lib/uwufetch/%s.png"
-                     : strcmp(user_info->os_name, "macos") == 0 ? "/usr/local/lib/uwufetch/%s.png"
-                                                                : "/usr/lib/uwufetch/%s.png";
+    char* repl_str = strcmp(user_info->os_name, "android") == 0 ? "/data/data/com.termux/files/usr/lib/owofetch/%s.png"
+                     : strcmp(user_info->os_name, "macos") == 0 ? "/usr/local/lib/owofetch/%s.png"
+                                                                : "/usr/lib/owofetch/%s.png";
     sprintf(user_info->image_name, repl_str, user_info->os_name); // image command for android
     LOG_V(user_info->image_name);
   }
@@ -405,56 +405,56 @@ void uwu_kernel(char* kernel) {
 // uwufies hardware names
 void uwu_hw(char* hwname) {
   LOG_I("uwufing hardware")
-#define HW_TO_UWU(original, uwuified) replace_ignorecase(hwname, original, uwuified);
-  HW_TO_UWU("lenovo", "LenOwO")
-  HW_TO_UWU("cpu", "CPUwU");
-  HW_TO_UWU("core", "Cowe");
-  HW_TO_UWU("gpu", "GPUwU")
-  HW_TO_UWU("graphics", "Gwaphics")
-  HW_TO_UWU("corporation", "COwOpowation")
-  HW_TO_UWU("nvidia", "NyaVIDIA")
-  HW_TO_UWU("mobile", "Mwobile")
-  HW_TO_UWU("intel", "Inteww")
-  HW_TO_UWU("celeron", "Celewon")
-  HW_TO_UWU("radeon", "Radenyan")
-  HW_TO_UWU("geforce", "GeFOwOce")
-  HW_TO_UWU("raspberry", "Nyasberry")
-  HW_TO_UWU("broadcom", "Bwoadcom")
-  HW_TO_UWU("motorola", "MotOwOwa")
-  HW_TO_UWU("proliant", "ProLinyant")
-  HW_TO_UWU("poweredge", "POwOwEdge ")
-  HW_TO_UWU("apple", "Nyapple")
-  HW_TO_UWU("electronic", "ElectrOwOnic")
-  HW_TO_UWU("processor", "Pwocessow")
-  HW_TO_UWU("microsoft", "MicOwOsoft")
-  HW_TO_UWU("ryzen", "Wyzen")
-  HW_TO_UWU("advanced", "Adwanced")
-  HW_TO_UWU("micro", "Micwo")
-  HW_TO_UWU("devices", "Dewices")
-  HW_TO_UWU("inc.", "Nyanc.")
-  HW_TO_UWU("lucienne", "Lucienyan")
-  HW_TO_UWU("tuxedo", "TUWUXEDO")
-  HW_TO_UWU("aura", "Uwura")
-  HW_TO_UWU("ryzen", "Wyzen")
-  HW_TO_UWU("pro", "OwO")
-  HW_TO_UWU("macbook", "MacbOwOok")
-#undef HW_TO_UWU
+#define HW_TO_OWO(original, uwuified) replace_ignorecase(hwname, original, uwuified);
+  HW_TO_OWO("lenovo", "LenOwO")
+  HW_TO_OWO("cpu", "CPUwU");
+  HW_TO_OWO("core", "Cowe");
+  HW_TO_OWO("gpu", "GPUwU")
+  HW_TO_OWO("graphics", "Gwaphics")
+  HW_TO_OWO("corporation", "COwOpowation")
+  HW_TO_OWO("nvidia", "NyaVIDIA")
+  HW_TO_OWO("mobile", "Mwobile")
+  HW_TO_OWO("intel", "Inteww")
+  HW_TO_OWO("celeron", "Celewon")
+  HW_TO_OWO("radeon", "Radenyan")
+  HW_TO_OWO("geforce", "GeFOwOce")
+  HW_TO_OWO("raspberry", "Nyasberry")
+  HW_TO_OWO("broadcom", "Bwoadcom")
+  HW_TO_OWO("motorola", "MotOwOwa")
+  HW_TO_OWO("proliant", "ProLinyant")
+  HW_TO_OWO("poweredge", "POwOwEdge ")
+  HW_TO_OWO("apple", "Nyapple")
+  HW_TO_OWO("electronic", "ElectrOwOnic")
+  HW_TO_OWO("processor", "Pwocessow")
+  HW_TO_OWO("microsoft", "MicOwOsoft")
+  HW_TO_OWO("ryzen", "Wyzen")
+  HW_TO_OWO("advanced", "Adwanced")
+  HW_TO_OWO("micro", "Micwo")
+  HW_TO_OWO("devices", "Dewices")
+  HW_TO_OWO("inc.", "Nyanc.")
+  HW_TO_OWO("lucienne", "Lucienyan")
+  HW_TO_OWO("tuxedo", "TUWUXEDO")
+  HW_TO_OWO("aura", "Uwura")
+  HW_TO_OWO("ryzen", "Wyzen")
+  HW_TO_OWO("pro", "OwO")
+  HW_TO_OWO("macbook", "MacbOwOok")
+#undef HW_TO_OWO
 }
 
 // uwufies package manager names
 void uwu_pkgman(char* pkgman_name) {
   LOG_I("uwufing package managers")
-#define PKGMAN_TO_UWU(original, uwuified) replace_ignorecase(pkgman_name, original, uwuified);
+#define PKGMAN_TO_OWO(original, uwuified) replace_ignorecase(pkgman_name, original, uwuified);
   // these package managers do not have edits yet:
   // apk, apt, guix, nix, pkg, xbps
-  PKGMAN_TO_UWU("brew-cask", "bwew-cawsk");
-  PKGMAN_TO_UWU("brew-cellar", "bwew-cewwaw");
-  PKGMAN_TO_UWU("emerge", "emewge");
-  PKGMAN_TO_UWU("flatpak", "fwatpakkies");
-  PKGMAN_TO_UWU("pacman", "pacnyan");
-  PKGMAN_TO_UWU("port", "powt");
-  PKGMAN_TO_UWU("snap", "snyap");
-#undef PKGMAN_TO_UWU
+  PKGMAN_TO_OWO("brew-cask", "bwew-cawsk");
+  PKGMAN_TO_OWO("brew-cellar", "bwew-cewwaw");
+  PKGMAN_TO_OWO("emerge", "emewge");
+  PKGMAN_TO_OWO("flatpak", "fwatpakkies");
+  PKGMAN_TO_OWO("pacman", "pacnyan");
+  PKGMAN_TO_OWO("port", "powt");
+  PKGMAN_TO_OWO("snap", "snyap");
+#undef PKGMAN_TO_OWO
 }
 
 // uwufies everything
@@ -550,7 +550,7 @@ int print_info(struct configuration* config_flags, struct info* user_info) {
 void write_cache(struct info* user_info) {
   LOG_I("writing cache");
   char cache_file[512];
-  sprintf(cache_file, "%s/.cache/uwufetch.cache", getenv("HOME")); // default cache file location
+  sprintf(cache_file, "%s/.cache/owofetch.cache", getenv("HOME")); // default cache file location
   LOG_V(cache_file);
   FILE* cache_fp = fopen(cache_file, "w");
   if (cache_fp == NULL) {
@@ -578,7 +578,7 @@ void write_cache(struct info* user_info) {
 int read_cache(struct info* user_info) {
   LOG_I("reading cache");
   char cache_file[512];
-  sprintf(cache_file, "%s/.cache/uwufetch.cache", getenv("HOME")); // cache file location
+  sprintf(cache_file, "%s/.cache/owofetch.cache", getenv("HOME")); // cache file location
   LOG_V(cache_file);
   FILE* cache_fp = fopen(cache_file, "r");
   if (cache_fp == NULL) return 0;
@@ -624,11 +624,11 @@ int print_ascii(struct info* user_info) {
   file = fopen(ascii_file, "r");
   if (!file) { // if the file does not exist in the local directory, open it from the installation directory
     if (strcmp(user_info->os_name, "android") == 0)
-      sprintf(ascii_file, "/data/data/com.termux/files/usr/lib/uwufetch/ascii/%s.txt", user_info->os_name);
+      sprintf(ascii_file, "/data/data/com.termux/files/usr/lib/owofetch/ascii/%s.txt", user_info->os_name);
     else if (strcmp(user_info->os_name, "macos") == 0)
-      sprintf(ascii_file, "/usr/local/lib/uwufetch/ascii/%s.txt", user_info->os_name);
+      sprintf(ascii_file, "/usr/local/lib/owofetch/ascii/%s.txt", user_info->os_name);
     else
-      sprintf(ascii_file, "/usr/lib/uwufetch/ascii/%s.txt", user_info->os_name);
+      sprintf(ascii_file, "/usr/lib/owofetch/ascii/%s.txt", user_info->os_name);
     LOG_V(ascii_file);
 
     file = fopen(ascii_file, "r");
@@ -714,12 +714,12 @@ void usage(char* arg) {
 #endif
          "                        read README.md for more info%s\n"
          "    -l, --list          lists all supported distributions\n"
-         "    -V, --version       prints the current uwufetch version\n"
+         "    -V, --version       prints the current owofetch version\n"
 #ifdef __DEBUG__
          "    -v, --verbose       logs everything\n"
 #endif
-         "    -w, --write-cache   writes to the cache file (~/.cache/uwufetch.cache)\n"
-         "    -r, --read-cache    reads from the cache file (~/.cache/uwufetch.cache)\n",
+         "    -w, --write-cache   writes to the cache file (~/.cache/owofetch.cache)\n"
+         "    -r, --read-cache    reads from the cache file (~/.cache/owofetch.cache)\n",
          arg,
 #ifndef __IPHONE__
          BLUE,
