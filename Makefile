@@ -1,9 +1,13 @@
 NAME = owofetch
 BIN_FILES = owofetch.c
 LIB_FILES = fetch.c
-OWOFETCH_VERSION = $(shell git describe --tags)
-CFLAGS = -O3 -pthread -DUWUFETCH_VERSION=\"$(OWOFETCH_VERSION)\"
-CFLAGS_DEBUG = -Wall -Wextra -g -pthread -DUWUFETCH_VERSION=\"$(OWOFETCH_VERSION)\" -D__DEBUG__
+OWOFETCH_VERSION = 0.0
+OWOFETCH_COMMITMSG = "$(shell git log -1 --pretty=%B)"
+OWOFETCH_COMMITID = "$(shell git log -1 --pretty=%h)"
+
+VARFLAGS = -DOWOFETCH_VERSION=\"$(OWOFETCH_VERSION)\" -DOWOFETCH_COMMITMSG=\"$(OWOFETCH_COMMITMSG)\" -DOWOFETCH_COMMITID=\"$(OWOFETCH_COMMITID)\"
+CFLAGS = -O3 -pthread $(VARFLAGS)
+CFLAGS_DEBUG = -Wall -Wextra -g -pthread $(VARFLAGS) -D__DEBUG__
 CC = cc
 AR = ar
 DESTDIR = /usr

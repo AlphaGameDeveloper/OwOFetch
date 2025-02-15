@@ -1,5 +1,5 @@
 /*
- *  UwUfetch is free software: you can redistribute it and/or modify
+ *  OwOFetch is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
@@ -13,8 +13,16 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef UWUFETCH_VERSION
-  #define UWUFETCH_VERSION "unkown" // needs to be changed by the build script
+#ifndef OWOFETCH_VERSION
+  #define OWOFETCH_VERSION "unkown" // needs to be changed by the build script
+#endif
+
+#ifndef OWOFETCH_COMMITMSG
+  #define OWOFETCH_COMMITMSG "Cannot get Git commit message! :("
+#endif
+
+#ifndef OWOFETCH_COMMITID
+  #define OWOFETCH_COMMITID 0000000
 #endif
 
 #define _GNU_SOURCE // for strcasestr
@@ -781,12 +789,19 @@ int main(int argc, char* argv[]) {
       user_config_file.read_enabled = true;
       break;
     case 'V':
-      printf("UwUfetch version %s\n", UWUFETCH_VERSION);
+      printf("%s[Note] Versioning is still a work-in-progress!\n", GREEN);
+      printf("%s[Note] Keep tuned for when I actually get around to working on that!\n\n", GREEN);
+      printf("%sOwOFetch version %s  %s[%s]\n", YELLOW, OWOFETCH_VERSION, RED, OWOFETCH_COMMITID);
+      #if __DEBUG__
+        printf("%sThis is a debug build!\n", RED);
+      #endif
+      // TODO: Make this gray!
+      // printf("%s[%s]\n", CYAN, OWOFETCH_COMMITMSG);
       return 0;
 #ifdef __DEBUG__
     case 'v':
       *verbose_enabled = true;
-      LOG_I("version %s", UWUFETCH_VERSION);
+      LOG_I("version %s", OWOFETCH_VERSION);
       break;
 #endif
     case 'w':
