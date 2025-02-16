@@ -11,23 +11,49 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: make
-      run: make
+      run: make release
     - name: run
-      run: ./owofetch
+      run: ./owofetch_*-linux/owofetch
+      continue-on-error: false
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: owofetch-linux
+        path: owofetch_*-linux.tar.gz
+
   windows:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: make
-      run: make
+      run: make release
     - name: run
-      run: ./owofetch
+      run: ./owofetch_*-win64/owofetch.exe
+      continue-on-error: false
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: owofetch-windows
+        path: owofetch_*-win64.tar.gz
+
   mac-os:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: make
-      run: make
+      run: make release
     - name: run
-      run: ./owofetch
+      run: ./owofetch_*-macos/owofetch
+      continue-on-error: false
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: owofetch-macos
+        path: owofetch_*-macos.tar.gz
