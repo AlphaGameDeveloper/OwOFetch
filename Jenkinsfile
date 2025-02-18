@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Release') {
             steps {
-                sh 'cp owofetch_*-linux.tar.gz /releases/$GIT_ABBREV_COMMIT_owofetch-linux.tar.gz'
+                sh "cp owofetch_*-linux.tar.gz /releases/${GIT_ABBREV_COMMIT}_owofetch-linux.tar.gz"
             }
         }
     }
