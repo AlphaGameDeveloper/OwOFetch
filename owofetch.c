@@ -541,7 +541,7 @@ int print_info(struct configuration* config_flags, struct info* user_info) {
 								BLOCK_CHAR GREEN BLOCK_CHAR BLOCK_CHAR YELLOW
 								BLOCK_CHAR BLOCK_CHAR BLUE BLOCK_CHAR BLOCK_CHAR
 								MAGENTA BLOCK_CHAR BLOCK_CHAR CYAN BLOCK_CHAR
-								BLOCK_CHAR WHITE BLOCK_CHAR BLOCK_CHAR NORMAL "\n", MOVE_CURSOR);
+								BLOCK_CHAR WHITE BLOCK_CHAR BLOCK_CHAR NORMAL "\n\n", MOVE_CURSOR);
   // clang-format on
   return line_count;
 }
@@ -680,6 +680,7 @@ int print_ascii(struct info* user_info) {
 void list(char* arg) {
   LOG_I("printing supported distro list");
   // clang-format off
+  
 	printf("%s -d <options>\n"
 				 "  Available distributions:\n"
 				 "    "BLUE"Arch linux "NORMAL"based:\n"
@@ -764,9 +765,9 @@ int main(int argc, char* argv[]) {
 #else
   #define OPT_STRING "c:d:hi::lrvw"
 #endif
-
   // reading cmdline options
   while ((opt = getopt_long(argc, argv, OPT_STRING, long_options, NULL)) != -1) {
+    LOG_I("Option -%c with argument: %s", opt, optarg ? optarg : "NULL");
     switch (opt) {
     case 'c': // set the config directory
       user_config_file.config_directory = optarg;
