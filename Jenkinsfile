@@ -8,6 +8,8 @@ pipeline {
     environment {
         GIT_ABBREV_COMMIT = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
         JENKINS_NOTIFICATIONS_WEBHOOK = credentials('discord-jenkins-webhook')
+        END_FILENAME = "${GIT_ABBREV_COMMIT}_owofetch-linux.tar.gz"
+        WWW_LOCATION = "https://releases.alphagame.dev/OwOFetch/${env.END_FILENAME}"
     }
     stages {
         stage('Build') {
@@ -24,7 +26,12 @@ pipeline {
         }
         stage('Release') {
             steps {
-                sh "cp owofetch_*-linux.tar.gz /releases/${GIT_ABBREV_COMMIT}_owofetch-linux.tar.gz"
+                sh "cp owofetch_*-linux.tar.gz /releases/${env.END_FILENAME}"
+                discordSend(
+                    webhookURL: env.JENKINS_NOTIFCATIONS_WEBHOOK,
+                    title: OwOFetch Release
+                    description: "WWW Location: ${env.WWW_LOCATION}"
+                    link: env.WWW_LOCATION
             }
         }
     }
