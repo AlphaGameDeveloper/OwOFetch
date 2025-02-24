@@ -29,9 +29,10 @@ pipeline {
                 sh "cp owofetch_*-linux.tar.gz /releases/${env.END_FILENAME}"
                 discordSend(
                     webhookURL: env.JENKINS_NOTIFCATIONS_WEBHOOK,
-                    title: "OwOFetch Release"
-                    description: "WWW Location: ${env.WWW_LOCATION}"
+                    title: "OwOFetch Release",
+                    description: "WWW Location: ${env.WWW_LOCATION}",
                     link: env.WWW_LOCATION
+                )
             }
         }
     }
