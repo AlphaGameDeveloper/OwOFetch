@@ -31,7 +31,8 @@ pipeline {
                     webhookURL: env.JENKINS_NOTIFCATIONS_WEBHOOK,
                     title: "OwOFetch Release",
                     description: "WWW Location: ${env.WWW_LOCATION}",
-                    link: env.WWW_LOCATION
+                    link: env.WWW_LOCATION,
+                    result: "SUCCESS" // this *should* never fail
                 )
             }
         }
