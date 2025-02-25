@@ -102,8 +102,12 @@ else
 	tar -czf $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR).tar.gz $(NAME)_$(OWOFETCH_VERSION)-$(PLATFORM_ABBR)
 endif
 
+# 2/24/2025 -> Removed automatic execution from `make debug` because it took too long to run
+# The same behavior can still be achieved with `make debug run` with the `run` target
 debug: CFLAGS = $(CFLAGS_DEBUG)
 debug: build
+
+run:
 	./$(NAME) $(ARGS)
 
 install: build man
@@ -131,7 +135,7 @@ ascii_debug:
 	ls res/ascii/$(ASCII).txt | entr -c ./$(NAME) -d $(ASCII)
 
 man:
-	sed "s/{DATE}/$(shell date '+%d %B %Y')/g" $(NAME).1 | sed "s/{OWOFETCH_VERSION}/$(OWOFETCH_VERSION)/g" | gzip > $(NAME).1.gz
+	sed "s/{DATE}/$(shell date '+%d %B %Y')/g" $(NAME).1 | sed "s/{OWOFETCH_VERSION}/$(OWOFETCH_VERSION)/g" | sed "s/{OWOFETCH_COMMIT}/$(OWOFETCH_COMMITID)/g" | gzip > $(NAME).1.gz
 
 man_debug:
 	@clear
