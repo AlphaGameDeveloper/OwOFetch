@@ -619,7 +619,6 @@ int print_ascii(struct info* user_info) {
   FILE* file;
   char ascii_file[1024];
   // First tries to get ascii art file from local directory. Useful for debugging
-  sprintf(ascii_file, "./res/ascii/%s.txt", user_info->os_name);
   LOG_V(ascii_file);
   file = fopen(ascii_file, "r");
   if (!file) { // if the file does not exist in the local directory, open it from the installation directory
@@ -633,9 +632,10 @@ int print_ascii(struct info* user_info) {
 
     file = fopen(ascii_file, "r");
     if (!file) {
-      // Prevent infinite loops
-      if (strcmp(user_info->os_name, "unknown") == 0) {
-        LOG_E("No\nunknown\nascii\nfile\n\n\n\n");
+      // Prevent infinite recursion
+      //if (strcmp(user_info->os_name, "unknown") == 0) {
+      if (1) {
+      LOG_E("\n\nNo\nunknown\nascii\nfile\n\n\n\n");
         return 7;
       }
       sprintf(user_info->os_name, "unknown"); // current os is not supported
@@ -805,7 +805,6 @@ int main(int argc, char* argv[]) {
 #ifdef __DEBUG__
     case 'V':
       *verbose_enabled = true;
-      LOG_I("version %s", OWOFETCH_VERSION);
       break;
 #endif
     case 'w':
@@ -841,7 +840,10 @@ int main(int argc, char* argv[]) {
   if (user_config_file.write_enabled) {
     write_cache(&user_info);
   }
-  if (custom_distro_name) sprintf(user_info.os_name, "%s", custom_distro_name);
+  if (custom_distro_name) {
+    LOG_I("USING CUSTOM DISTRO OWO --------------------------------");
+    sprintf(user_info.os_name, "%s", custom_distro_name);
+  };
   if (custom_image_name) sprintf(user_info.image_name, "%s", custom_image_name);
 
   uwufy_all(&user_info);
