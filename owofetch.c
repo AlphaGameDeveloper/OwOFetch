@@ -619,6 +619,7 @@ int print_ascii(struct info* user_info) {
   FILE* file;
   char ascii_file[1024];
   // First tries to get ascii art file from local directory. Useful for debugging
+  sprintf(ascii_file, "./res/ascii/%s.txt", user_info->os_name);
   LOG_V(ascii_file);
   file = fopen(ascii_file, "r");
   if (!file) { // if the file does not exist in the local directory, open it from the installation directory
